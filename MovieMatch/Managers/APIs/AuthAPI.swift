@@ -1,6 +1,6 @@
 import Firebase
 
-class AuthAPI {
+class AuthAPI: APIProtocol {
     static var shared = AuthAPI()
     private var handle: AuthStateDidChangeListenerHandle?
     
@@ -12,15 +12,11 @@ class AuthAPI {
         firebaseRemove()
     }
     
-    private func firebaseConfigure() {
-        FirebaseApp.configure()
-    }
-    
     func firebaseRemove() {
         guard let handle = handle else { return }
         Auth.auth().removeStateDidChangeListener(handle)
     }
-    
+
     func authStateListener(completion: @escaping BoolCompletion) {
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             completion(user != nil ? true : false)

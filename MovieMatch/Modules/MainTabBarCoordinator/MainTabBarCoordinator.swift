@@ -8,22 +8,16 @@ protocol TabBarPresentableCoorinator: Coordinator {
 final class MainTabbarCoordinator: UITabBarController {
     
     private var coordinators: [TabBarPresentableCoorinator]!
-            
+    private lazy var underView = InterfaceBuilder.makeView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+        self.setupTabBarAppearance()
     }
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.tabBar.invalidateIntrinsicContentSize()
-        self.tabBar.layoutSubviews()
-        self.setupTabbarAppearance()
-        self.addTabbarShadow()
-        self.fillCoordinators()
+        setUI()
     }
     
     required init?(coder: NSCoder) {
@@ -34,41 +28,35 @@ final class MainTabbarCoordinator: UITabBarController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func setupTabbarAppearance() {
-        let appearance = UITabBarAppearance()
-        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(named: "TintColor")]
-        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.white]
-        tabBar.standardAppearance = appearance
-        UITabBar.appearance().backgroundColor = UIColor(named: "OtherColor")
+    private func setUI() {
+        self.tabBar.invalidateIntrinsicContentSize()
+        self.tabBar.layoutSubviews()
+        self.fillCoordinators()
     }
     
-    private func addTabbarShadow() {
-        tabBar.layer.shadowOffset = .zero
-        tabBar.layer.shadowRadius = 4
-        tabBar.layer.shadowColor = UIColor.black.cgColor
-        tabBar.layer.shadowOpacity = 0.1
+    private func setupTabBarAppearance() {
+        let customTabBar = CustomizedTabBar(frame: self.tabBar.frame)
+        self.setValue(customTabBar, forKey: "tabBar")
     }
     
     private func fillCoordinators() {
-        // TODO: - clean mocks
         let matchCoordinator = MatchCoordinator(navigation: UINavigationController())
-        let browserCoordinator = MockCoordinator(title: "Browser",
-                                                 imageActive: UIImage(),
-                                                 imageInactive: UIImage())
-        let mainVPNCoordinator = MockCoordinator(title: "VPN",
-                                                 imageActive: UIImage(),
-                                                 imageInactive: UIImage())
-
+        let favoriteCoordinator = FavoriteCoordinator(navigation: UINavigationController())
+        let profileCoordinator = ProfileCoordinator(navigation: UINavigationController())
+        
         coordinators = [matchCoordinator,
-                        browserCoordinator,
-                        mainVPNCoordinator]
-
+                        favoriteCoordinator,
+                        profileCoordinator]
+        
         coordinators.forEach {
             $0.navigationController.tabBarItem = $0.tabBarItem
+            $0.navigationController.tabBarItem.imageInsets = UIEdgeInsets(top: -12, left: 0, bottom: 0, right: 0)
+            $0.navigationController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 0)
+            $0.navigationController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+            $0.navigationController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         }
-        self.viewControllers = coordinators.map {
-            $0.navigationController
-        }
+        
+        self.viewControllers = coordinators.map { $0.navigationController }
         coordinators.forEach { $0.start() }
     }
     

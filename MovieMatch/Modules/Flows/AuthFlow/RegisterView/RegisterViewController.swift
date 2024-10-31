@@ -3,8 +3,8 @@ import UIKit
 class RegisterViewController: BaseViewController {
     let viewModel: AuthViewModel
     
-    let emailLabel = InterfaceBuilder.makeLabel(title: .email, font: .big)
-    let passwordLabel = InterfaceBuilder.makeLabel(title: .password, font: .big)
+    let emailLabel = InterfaceBuilder.makeLabel(font: .big)
+    let passwordLabel = InterfaceBuilder.makeLabel(font: .big)
     let emailTextField = InterfaceBuilder.makeTextField(isPassword: false, placeholder: .enterEmail)
     let passwordTextField = InterfaceBuilder.makeTextField(isPassword: true, placeholder: .enterPassword)
     let registerButton = InterfaceBuilder.makeButton(withTitle: .register)
@@ -33,6 +33,9 @@ class RegisterViewController: BaseViewController {
     }
     
     private func setSubviews() {
+        emailLabel.text = MainTitleForUI.email.text
+        passwordLabel.text = MainTitleForUI.password.text
+        
         view.addSubviews(separatorView,
                          emailLabel,
                          emailTextField,

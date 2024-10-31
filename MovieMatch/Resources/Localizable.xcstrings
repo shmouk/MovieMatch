@@ -1,6 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "actors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actors"
+          }
+        }
+      }
+    },
+    "authError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current user is not authenticated"
+          }
+        }
+      }
+    },
     "cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -23,6 +45,17 @@
         }
       }
     },
+    "countries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Countries"
+          }
+        }
+      }
+    },
     "createAccount" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -30,6 +63,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "If you don't have an account, click on me!"
+          }
+        }
+      }
+    },
+    "directors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Directors"
           }
         }
       }
@@ -74,6 +118,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Favorite"
+          }
+        }
+      }
+    },
+    "friends" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friends"
+          }
+        }
+      }
+    },
+    "imageError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image loading error"
           }
         }
       }
@@ -144,6 +210,17 @@
         }
       }
     },
+    "invalidURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        }
+      }
+    },
     "match" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -195,6 +272,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No date"
+          }
+        }
+      }
+    },
+    "pair" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current pair"
           }
         }
       }
@@ -272,6 +360,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Success sign in"
+          }
+        }
+      }
+    },
+    "successUpdate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Success Update"
+          }
+        }
+      }
+    },
+    "year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Year"
           }
         }
       }

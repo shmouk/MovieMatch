@@ -3,7 +3,7 @@ import UIKit
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(named: "BgColor")
+        self.view.backgroundColor = ColorForUI.bg.color
     }
     
     func shouldHideNavBar(_ status: Bool) {

@@ -16,7 +16,8 @@ class KeyboardManager {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc private func keyboardWillShow(_ notification: Notification) {
+    @objc 
+    private func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
@@ -28,7 +29,8 @@ class KeyboardManager {
         }
     }
     
-    @objc private func keyboardWillHide(_ notification: Notification) {
+    @objc 
+    private func keyboardWillHide(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0
         

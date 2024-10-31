@@ -1,11 +1,12 @@
 import Foundation
 
 final class Constants {
-    static let blankString = "about:blank"
+    static let blankString: String = "about:blank"
     static let blankInt = 0
     static let blankDouble = 0.0
-    static let emptyString = "..."
-    
+    static let emptyString: String = "..."
+    static let radii: CGFloat = 16
+
     static var randomInt: Int {
         Int.random(in: 1...999999)
     }
@@ -17,7 +18,7 @@ final class Constants {
         
         guard let isoDate = isoDate,
               let date = dateFormatter.date(from: isoDate) else {
-            return TitleForUI.noDate.text
+            return MainTitleForUI.noDate.text
         }
         
         dateFormatter.dateFormat = "d MMMM yyyy"

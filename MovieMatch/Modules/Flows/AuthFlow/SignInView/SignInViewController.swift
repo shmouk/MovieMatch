@@ -4,15 +4,15 @@ class SignInViewController: BaseViewController {
     let viewModel: AuthViewModel
     
     lazy var logoImageView = InterfaceBuilder.makeImageView()
-    lazy var emailLabel = InterfaceBuilder.makeLabel(title: .email, font: .big)
-    lazy var passwordLabel = InterfaceBuilder.makeLabel(title: .password, font: .big)
+    lazy var emailLabel = InterfaceBuilder.makeLabel(font: .big)
+    lazy var passwordLabel = InterfaceBuilder.makeLabel(font: .big)
     lazy var emailTextField = InterfaceBuilder.makeTextField(isPassword: false, placeholder: .enterEmail)
     lazy var passwordTextField = InterfaceBuilder.makeTextField(isPassword: true, placeholder: .enterPassword)
     lazy var logInButton = InterfaceBuilder.makeButton(withTitle: .signIn)
-    lazy var createAccountLabel = InterfaceBuilder.makeLabel(title: .createAccount, font: .regular, textAlignment: .center)
+    lazy var createAccountLabel = InterfaceBuilder.makeLabel(font: .regular, textAlignment: .center)
 
     var didTapLogIn: StringCompletion?
-    var didTapCreateAccount: TapHandler?
+    var didTapCreateAccount: Handler?
 
     private var keyboardManager: KeyboardManager?
 
@@ -40,6 +40,10 @@ class SignInViewController: BaseViewController {
     }
     
     private func setSubviews() {
+        emailLabel.text = MainTitleForUI.email.text
+        passwordLabel.text = MainTitleForUI.password.text
+        createAccountLabel.text = MainTitleForUI.createAccount.text
+        
         view.addSubviews(logoImageView,
                          emailLabel,
                          emailTextField,

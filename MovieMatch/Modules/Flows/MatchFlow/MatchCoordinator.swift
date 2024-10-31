@@ -4,8 +4,12 @@ final class MatchCoordinator: TabBarPresentableCoorinator {
     let alertManager = AlertManager.shared
     
     var tabBarItem: UITabBarItem = {
-        var icon = UIImage(systemName: "play.house.fill")
-        let item = UITabBarItem(title: nil, image: icon, tag: 0)
+        let selectedIcon = UIImage(systemName: "play.house.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        let unselectedIcon = UIImage(systemName: "play.house.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let item = UITabBarItem()
+        item.title = MainTitleForTabBar.match.text
+        item.selectedImage = selectedIcon
+        item.image = unselectedIcon
         return item
     }()
     
@@ -19,7 +23,7 @@ final class MatchCoordinator: TabBarPresentableCoorinator {
     }
     
     func start() {
-        self.navigationController.pushViewController(createMainAuthController(), animated: false)
+        self.navigationController.pushViewController(createMatchController(), animated: false)
     }
     
     func stop() {
@@ -28,7 +32,7 @@ final class MatchCoordinator: TabBarPresentableCoorinator {
 }
 
 extension MatchCoordinator {
-    private func createMainAuthController() -> UIViewController {
+    private func createMatchController() -> UIViewController {
         let viewModel = MatchViewModel()
         let controller = MatchViewController(viewModel: viewModel)
         
@@ -48,17 +52,6 @@ extension MatchCoordinator {
 //            self?.stop()
 //        }
 //        
-        return controller
-    }
-    
-    private func createRegisterController() -> UIViewController {
-        let viewModel = AuthViewModel()
-        let controller = RegisterViewController(viewModel: viewModel)
-        
-        controller.didTapRegister = { [weak self] text in
-            self?.alertManager.showAlert(title: text, viewController: controller)
-        }
-        
         return controller
     }
 }

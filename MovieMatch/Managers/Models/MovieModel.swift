@@ -9,14 +9,14 @@ struct Movie {
     let preview: UIImage
     let countryList: String
     let genreList: String
-    let director: String
+    let directorList: String
     let worldPremiereDate: String
     let movieLength: String
     let ageRating: String
     let description: String
     let shortDescription: String
     let ratings: Ratings
-    let actors: [Actor]
+    let actorList: String
 
     struct Trailer {
         let url: URL?
@@ -29,12 +29,6 @@ struct Movie {
         let imdb: String
 //        let filmCritics: Int
 //        let russianFilmCritics: Int
-    }
-    
-    struct Actor {
-        let photo: UIImage?
-        let firstName: String?
-        let lastName: String?
     }
 }
 
@@ -50,6 +44,3 @@ extension Movie.Ratings {
     static var mock: Movie.Ratings = .mock
 }
 
-extension Movie.Actor {
-    static var mock: Movie.Actor = .mock
-}
